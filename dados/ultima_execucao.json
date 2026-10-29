@@ -1,29 +1,32 @@
 {
- "data": "2026-10-29T20:22:23+00:00",
- "ativos": 168,
- "novos": 168,
+ "data": "2026-10-29T20:24:58+00:00",
+ "ativos": 412,
+ "novos": 412,
  "email_enviado": false,
  "fontes": [
   {
    "busca": "Duster",
    "fonte": "olx",
-   "erro": "HTTPError: HTTP Error 403: "
+   "anuncios": 750,
+   "aprovados": 119
   },
   {
    "busca": "Duster",
    "fonte": "webmotors",
-   "anuncios": 192,
-   "aprovados": 168
+   "anuncios": 360,
+   "aprovados": 293
   },
   {
    "busca": "Duster",
    "fonte": "mercadolivre",
-   "erro": "ValueError: Mercado Livre: nenhum anúncio na página (layout mudou ou acesso bloqueado)"
+   "erro": "ValueError: Mercado Livre: nenhum anúncio na página (layout mudou ou acesso bloqueado)",
+   "usando_cache": false
   },
   {
    "busca": "Duster",
    "fonte": "icarros",
-   "erro": "HTTPError: HTTP Error 403: "
+   "erro": "HTTPError: HTTP Error 403: ",
+   "usando_cache": false
   }
  ]
 }
