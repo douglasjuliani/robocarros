@@ -36,6 +36,21 @@ Vá em **Actions → Robô de carros → Run workflow**. O 1º e-mail traz todos
 anúncios que existem hoje. Depois disso, o robô roda sozinho a cada hora e
 manda e-mail só quando aparecer carro novo.
 
+## Lista de prioridade
+A cada execução o robô atualiza o arquivo **[RANKING.md](RANKING.md)** com todos os
+anúncios encontrados, do **mais barato em relação à média** para o mais caro. A média é
+a dos anúncios do mesmo ano (quando há 3 ou mais); senão, a média geral.
+⚠️ marca anúncios mais de 30% abaixo da média, que costumam ser golpe, leilão ou sinistro.
+O e-mail traz essa mesma lista, com os anúncios novos marcados com 🆕.
+
+## Situação de cada site (rodando no GitHub)
+- **Webmotors:** funciona.
+- **OLX:** o Cloudflare às vezes bloqueia os servidores do GitHub; quando bloqueia, a
+  lista reaproveita o último resultado bom (até 24 h).
+- **Mercado Livre e iCarros:** bloqueiam servidores. Funcionariam rodando no seu computador.
+
+O resumo da última execução fica em `dados/ultima_execucao.json`.
+
 ## Rodar no seu computador
 ```
 pip install -r requirements.txt

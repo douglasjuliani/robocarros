@@ -20,9 +20,21 @@ import yaml
 from . import http, notificacao, ranking
 from .filtro import aceita
 from .fontes import FONTES
-from .modelo import Busca, uf_de
+from .modelo import Anuncio, Busca, uf_de
 
 RAIZ = Path(__file__).resolve().parent.parent
+CACHE_HORAS = 24  # quanto tempo reaproveitar o último resultado de um site que falhou
+
+
+def ler_cache(caminho: Path, chave: str) -> list[Anuncio] | None:
+    try:
+        item = json.loads(caminho.read_text())[chave]
+    except (FileNotFoundError, KeyError, json.JSONDecodeError):
+        return None
+    idade = datetime.now(timezone.utc) - datetime.fromisoformat(item["data"])
+    if idade.total_seconds() > CACHE_HORAS * 3600:
+        return None
+    return [Anuncio(**a) for a in item["anuncios"]]
 
 
 def carregar_config(caminho: Path) -> tuple[dict, list[Busca]]:
@@ -55,6 +67,11 @@ def main() -> int:
         print("AVISO: segredos de e-mail não configurados; rodando em modo simulado.")
 
     shutil.rmtree(http.DEBUG, ignore_errors=True)
+    caminho_cache = args.vistos.parent / "cache.json"
+    try:
+        cache = json.loads(caminho_cache.read_text())
+    except (FileNotFoundError, json.JSONDecodeError):
+        cache = {}
     novos = []
     todos = {}  # todos os anúncios ativos que passam no filtro (para a lista de prioridade)
     erros = []
@@ -66,10 +83,20 @@ def main() -> int:
                 anuncios = FONTES[nome_fonte](busca, max_paginas)
             except Exception as e:  # uma fonte falhar não pode derrubar as outras
                 erros.append(f"{busca.nome}/{nome_fonte}: {e}")
-                relatorio.append({"busca": busca.nome, "fonte": nome_fonte, "erro": f"{type(e).__name__}: {e}"[:300]})
                 traceback.print_exc()
                 http.salvar_debug(f"{busca.nome}_{nome_fonte}".lower())
+                anterior = ler_cache(caminho_cache, f"{busca.nome}/{nome_fonte}")
+                relatorio.append({"busca": busca.nome, "fonte": nome_fonte, "erro": f"{type(e).__name__}: {e}"[:300],
+                                  "usando_cache": anterior is not None})
+                # para a lista de prioridade, usa o último resultado bom (sem gerar avisos de "novo")
+                for a in anterior or []:
+                    if aceita(a, busca):
+                        todos.setdefault(a.chave, (busca.nome, a))
                 continue
+            cache[f"{busca.nome}/{nome_fonte}"] = {
+                "data": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+                "anuncios": [vars(a) for a in anuncios],
+            }
             aprovados = [a for a in anuncios if aceita(a, busca)]
             print(f"[{busca.nome}] {nome_fonte}: {len(anuncios)} anúncios, {len(aprovados)} passam no filtro")
             relatorio.append({"busca": busca.nome, "fonte": nome_fonte,
@@ -87,6 +114,7 @@ def main() -> int:
     (RAIZ / "RANKING.md").write_text(ranking.markdown(lista, agora), encoding="utf-8")
 
     args.vistos.parent.mkdir(parents=True, exist_ok=True)
+    caminho_cache.write_text(json.dumps(cache, ensure_ascii=False))
     (args.vistos.parent / "ultima_execucao.json").write_text(json.dumps({
         "data": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "ativos": len(todos),
