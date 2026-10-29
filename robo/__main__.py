@@ -8,8 +8,10 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import traceback
+from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
@@ -47,18 +49,26 @@ def main() -> int:
     primeira_vez = not args.vistos.exists()
     vistos: dict[str, str] = json.loads(args.vistos.read_text()) if not primeira_vez else {}
 
+    simular = args.simular or not os.environ.get("SMTP_USUARIO")
+    if simular and not args.simular:
+        print("AVISO: segredos de e-mail não configurados; rodando em modo simulado.")
+
     novos = []
     erros = []
+    relatorio = []
     for busca in buscas:
         for nome_fonte in busca.fontes or config.get("fontes", list(FONTES)):
             try:
                 anuncios = FONTES[nome_fonte](busca, max_paginas)
             except Exception as e:  # uma fonte falhar não pode derrubar as outras
                 erros.append(f"{busca.nome}/{nome_fonte}: {e}")
+                relatorio.append({"busca": busca.nome, "fonte": nome_fonte, "erro": f"{type(e).__name__}: {e}"[:300]})
                 traceback.print_exc()
                 continue
             aprovados = [a for a in anuncios if aceita(a, busca)]
             print(f"[{busca.nome}] {nome_fonte}: {len(anuncios)} anúncios, {len(aprovados)} passam no filtro")
+            relatorio.append({"busca": busca.nome, "fonte": nome_fonte,
+                              "anuncios": len(anuncios), "aprovados": len(aprovados)})
             for a in aprovados:
                 if a.chave not in vistos:
                     vistos[a.chave] = a.url
@@ -66,11 +76,20 @@ def main() -> int:
 
     print(f"{len(novos)} anúncio(s) novo(s). Erros: {len(erros)}")
 
-    if novos:
-        notificacao.enviar(*notificacao.montar(novos, primeira_vez, max_anuncios), simular=args.simular)
-
     args.vistos.parent.mkdir(parents=True, exist_ok=True)
-    args.vistos.write_text(json.dumps(vistos, indent=1, ensure_ascii=False))
+    (args.vistos.parent / "ultima_execucao.json").write_text(json.dumps({
+        "data": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "novos": len(novos),
+        "email_enviado": bool(novos) and not simular,
+        "fontes": relatorio,
+    }, indent=1, ensure_ascii=False))
+
+    if novos:
+        notificacao.enviar(*notificacao.montar(novos, primeira_vez, max_anuncios), simular=simular)
+
+    # em modo simulado não marca nada como visto, para o 1º e-mail real trazer tudo
+    if not simular or args.simular:
+        args.vistos.write_text(json.dumps(vistos, indent=1, ensure_ascii=False))
 
     # falha o job só se TODAS as fontes falharem, para você perceber no GitHub
     total = sum(len(b.fontes or config.get("fontes", list(FONTES))) for b in buscas)
