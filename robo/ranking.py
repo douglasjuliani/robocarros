@@ -16,9 +16,24 @@ SUSPEITO = -0.30  # 30% abaixo da média costuma ser golpe, leilão ou sinistro
 
 def calcular(itens: list[tuple[str, Anuncio]], chaves_novas: set[str] = frozenset()) -> list[dict]:
     por_busca: dict[str, list[Anuncio]] = defaultdict(list)
-    for busca, a in itens:
+    for busca, a in sorted(itens, key=lambda x: x[1].preco or 0):
         if a.preco:
             por_busca[busca].append(a)
+
+    # o mesmo carro anunciado em mais de um site: fica o mais barato, com os outros sites anotados
+    outros_sites: dict[str, list[str]] = defaultdict(list)
+    for busca, anuncios in por_busca.items():
+        unicos, vistos = [], {}
+        for a in anuncios:
+            # km "quebrada" (ex.: 31.791) + mesmo ano identificam bem o veículo
+            chave = (a.km, a.ano) if a.km and a.km % 1000 else None
+            if chave and chave in vistos and vistos[chave].fonte != a.fonte:
+                outros_sites[vistos[chave].chave].append(a.fonte)
+                continue
+            if chave:
+                vistos.setdefault(chave, a)
+            unicos.append(a)
+        por_busca[busca] = unicos
 
     lista = []
     for busca, anuncios in por_busca.items():
@@ -40,6 +55,7 @@ def calcular(itens: list[tuple[str, Anuncio]], chaves_novas: set[str] = frozense
                 "diferenca": dif,
                 "base": base,
                 "novo": a.chave in chaves_novas,
+                "outros_sites": sorted(set(outros_sites.get(a.chave, []))),
                 "suspeito": dif <= SUSPEITO,
             })
     lista.sort(key=lambda x: x["diferenca"])
@@ -59,7 +75,7 @@ def markdown(lista: list[dict], data: str) -> str:
         f"Atualizada em {data} (UTC). Ordenada do anúncio **mais abaixo da média** para o mais caro.",
         "A média é a dos anúncios do mesmo ano (quando há 3 ou mais); senão, a média geral.",
         "",
-        "| # | Anúncio | Preço | Média | Diferença | Ano | Km | Local | Site |",
+        "| # | Anúncio | Preço | Média | Diferença | Ano modelo | Km | Local | Site |",
         "|---|---|---|---|---|---|---|---|---|",
     ]
     for it in lista:
@@ -70,7 +86,7 @@ def markdown(lista: list[dict], data: str) -> str:
         titulo = a.titulo.replace("|", "/")
         linhas.append(
             f"| {it['posicao']} | [{titulo}]({a.url}){marca} | **{_fmt_preco(a.preco)}** | "
-            f"{_fmt_preco(it['media'])} | {it['diferenca']:+.1%} | {a.ano or '—'} | {km} | {local} | {a.fonte} |"
+            f"{_fmt_preco(it['media'])} | {it['diferenca']:+.1%} | {a.ano or '—'} | {km} | {local} | {' + '.join([a.fonte, *it['outros_sites']])} |"
         )
     if not lista:
         linhas.append("| | Nenhum anúncio encontrado com os filtros atuais. | | | | | | | |")

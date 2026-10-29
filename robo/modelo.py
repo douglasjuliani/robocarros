@@ -84,11 +84,12 @@ class Anuncio:
     titulo: str
     url: str
     preco: int | None = None
-    ano: int | None = None
+    ano: int | None = None  # ano do modelo
     km: int | None = None
     cidade: str | None = None
     uf: str | None = None
     cambio: str | None = None
+    ano_fab: int | None = None  # ano de fabricação, quando o site informa
 
     @property
     def chave(self) -> str:

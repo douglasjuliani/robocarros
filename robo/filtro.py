@@ -33,10 +33,11 @@ def aceita(a: Anuncio, b: Busca) -> bool:
             return False
         if b.preco_max and a.preco > b.preco_max:
             return False
-    if a.ano is not None:
-        if b.ano_min and a.ano < b.ano_min:
+    ano = a.ano_fab or a.ano  # o filtro de ano usa o de fabricação quando o site informa
+    if ano is not None:
+        if b.ano_min and ano < b.ano_min:
             return False
-        if b.ano_max and a.ano > b.ano_max:
+        if b.ano_max and ano > b.ano_max:
             return False
     if a.km is not None and b.km_max and a.km > b.km_max:
         return False

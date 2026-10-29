@@ -43,7 +43,7 @@ def test_webmotors():
         "Version": {"Value": "2.0 EXL CVT"}, "YearFabrication": "2019", "YearModel": 2020.0, "Odometer": 30000.0, "NumberPorts": "4"},
         "Prices": {"Price": 105000.0}, "Seller": {"City": "Joinville", "State": "Santa Catarina (SC)"}}]}
     [a] = webmotors.extrair(dados)
-    assert (a.preco, a.ano, a.km, a.id) == (105000, 2019, 30000, "555")
+    assert (a.preco, a.ano, a.ano_fab, a.km, a.id) == (105000, 2020, 2019, 30000, "555")
     assert a.url.endswith("/honda/civic/2-0-exl-cvt/4-portas/2020/555")
     assert "honda%2Fcivic" in webmotors.montar_url(BUSCA, 1)
 
@@ -108,3 +108,13 @@ def test_olx_cards():
     [a] = olx.extrair(html)
     assert (a.id, a.preco, a.ano, a.km, a.cidade, a.uf) == ("1548636195", 89000, 2023, 41000, "Novo Hamburgo", "RS")
     assert filtro.aceita(a, Busca(nome="D", modelo="Duster", cambio="automatico"))
+
+
+def test_ranking_junta_duplicados_e_ano_fabricacao():
+    wm = Anuncio("webmotors", "1", "Duster", "u1", 85990, 2026, 31791, ano_fab=2025)
+    ox = Anuncio("olx", "2", "Duster", "u2", 86500, 2026, 31791)
+    outro = Anuncio("olx", "3", "Duster", "u3", 120000, 2026, 30000)
+    lista = ranking.calcular([("D", x) for x in (ox, wm, outro)])
+    assert [it["anuncio"].id for it in lista] == ["1", "3"] and lista[0]["outros_sites"] == ["olx"]
+    b = Busca(nome="D", ano_min=2026)
+    assert not filtro.aceita(wm, b) and filtro.aceita(ox, b)  # fabricação 2025 < 2026

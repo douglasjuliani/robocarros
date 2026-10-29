@@ -52,11 +52,11 @@ def extrair(dados: dict) -> list[Anuncio]:
         vendedor = item.get("Seller") or {}
         precos = item.get("Prices") or {}
         marca, modelo, versao = (_valor(spec.get(k)) or "" for k in ("Make", "Model", "Version"))
-        ano = numero(spec.get("YearFabrication")) or numero(spec.get("YearModel"))
+        ano = numero(spec.get("YearModel")) or numero(spec.get("YearFabrication"))
         uid = item.get("UniqueId")
         url = (
             f"https://www.webmotors.com.br/comprar/{slug(marca)}/{slug(modelo)}/"
-            f"{slug(versao)}/{spec.get('NumberPorts') or 4}-portas/{numero(spec.get('YearModel')) or ano or ''}/{uid}"
+            f"{slug(versao)}/{spec.get('NumberPorts') or 4}-portas/{ano or ''}/{uid}"
         )
         anuncios.append(Anuncio(
             fonte="webmotors",
@@ -69,6 +69,7 @@ def extrair(dados: dict) -> list[Anuncio]:
             cidade=vendedor.get("City"),
             uf=uf_de(vendedor.get("State")),
             cambio=_valor(spec.get("Transmission")),
+            ano_fab=numero(spec.get("YearFabrication")),
         ))
     return anuncios
 

@@ -59,7 +59,7 @@ def montar(novos: list[tuple[str, Anuncio]], lista: list[dict], primeira_vez: bo
             + f"<td>{a.ano or '—'}</td>"
             f"<td style='white-space:nowrap'>{_km(a)}</td>"
             f"<td>{escape(_local(a))}</td>"
-            f"<td>{a.fonte}</td>"
+            f"<td>{' + '.join([a.fonte, *it.get('outros_sites', [])])}</td>"
             "</tr>"
         )
     resto = f"…e mais {len(lista) - limite} anúncio(s) na lista completa (RANKING.md no GitHub)." if len(lista) > limite else ""
@@ -67,7 +67,7 @@ def montar(novos: list[tuple[str, Anuncio]], lista: list[dict], primeira_vez: bo
 
     texto = "\n\n".join([intro, *linhas_txt, resto, legenda]).strip()
     cab = "".join(f"<th style='text-align:left;padding:6px'>{c}</th>"
-                  for c in ("#", "Anúncio", "Preço", "vs. média", "Ano", "Km", "Local", "Site"))
+                  for c in ("#", "Anúncio", "Preço", "vs. média", "Ano modelo", "Km", "Local", "Site"))
     html = (
         f"<p>{escape(intro)}</p>"
         "<table border='1' cellspacing='0' cellpadding='6' style='border-collapse:collapse;font-family:sans-serif;font-size:14px'>"
