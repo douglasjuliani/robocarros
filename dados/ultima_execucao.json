@@ -1,0 +1,49 @@
+{
+ "data": "2026-10-29T20:16:51+00:00",
+ "novos": 9,
+ "email_enviado": false,
+ "fontes": [
+  {
+   "busca": "Civic",
+   "fonte": "olx",
+   "erro": "ValueError: OLX: __NEXT_DATA__ não encontrado (layout mudou ou acesso bloqueado)"
+  },
+  {
+   "busca": "Civic",
+   "fonte": "webmotors",
+   "anuncios": 48,
+   "aprovados": 2
+  },
+  {
+   "busca": "Civic",
+   "fonte": "mercadolivre",
+   "erro": "HTTPError: HTTP Error 403: "
+  },
+  {
+   "busca": "Civic",
+   "fonte": "icarros",
+   "erro": "HTTPError: HTTP Error 403: "
+  },
+  {
+   "busca": "Corolla",
+   "fonte": "olx",
+   "erro": "ValueError: OLX: __NEXT_DATA__ não encontrado (layout mudou ou acesso bloqueado)"
+  },
+  {
+   "busca": "Corolla",
+   "fonte": "webmotors",
+   "anuncios": 48,
+   "aprovados": 7
+  },
+  {
+   "busca": "Corolla",
+   "fonte": "mercadolivre",
+   "erro": "HTTPError: HTTP Error 403: "
+  },
+  {
+   "busca": "Corolla",
+   "fonte": "icarros",
+   "erro": "HTTPError: HTTP Error 403: "
+  }
+ ]
+}
