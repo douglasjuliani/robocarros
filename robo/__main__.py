@@ -1,8 +1,8 @@
-"""Executa todas as buscas, filtra, descarta o que já foi visto e avisa no WhatsApp.
+"""Executa todas as buscas, filtra, descarta o que já foi visto e avisa por e-mail.
 
 Uso:
     python -m robo                 # execução normal
-    python -m robo --simular       # mostra as mensagens no terminal em vez de enviar
+    python -m robo --simular       # mostra o e-mail no terminal em vez de enviar
 """
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ from pathlib import Path
 
 import yaml
 
-from . import whatsapp
+from . import notificacao
 from .filtro import aceita
 from .fontes import FONTES
 from .modelo import Busca, uf_de
@@ -37,12 +37,12 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", type=Path, default=RAIZ / "config.yaml")
     ap.add_argument("--vistos", type=Path, default=RAIZ / "dados" / "vistos.json")
-    ap.add_argument("--simular", action="store_true", help="não envia WhatsApp, só imprime")
+    ap.add_argument("--simular", action="store_true", help="não envia e-mail, só imprime")
     args = ap.parse_args()
 
     config, buscas = carregar_config(args.config)
     max_paginas = config.get("max_paginas", 2)
-    max_msgs = config.get("max_mensagens_por_execucao", 10)
+    max_anuncios = config.get("max_anuncios_por_email", 50)
 
     primeira_vez = not args.vistos.exists()
     vistos: dict[str, str] = json.loads(args.vistos.read_text()) if not primeira_vez else {}
@@ -66,19 +66,8 @@ def main() -> int:
 
     print(f"{len(novos)} anúncio(s) novo(s). Erros: {len(erros)}")
 
-    if primeira_vez and config.get("silenciar_primeira_execucao", True):
-        print("Primeira execução: anúncios atuais registrados sem notificar.")
-        if novos:
-            whatsapp.enviar(
-                f"🤖 Robô de carros ativado! {len(novos)} anúncios atuais registrados. "
-                "A partir de agora você recebe só os novos.",
-                args.simular,
-            )
-    else:
-        for nome_busca, a in novos[:max_msgs]:
-            whatsapp.enviar(whatsapp.formatar(a, nome_busca), args.simular)
-        if len(novos) > max_msgs:
-            whatsapp.enviar(f"…e mais {len(novos) - max_msgs} anúncio(s) novo(s). Refine os filtros!", args.simular)
+    if novos:
+        notificacao.enviar(*notificacao.montar(novos, primeira_vez, max_anuncios), simular=args.simular)
 
     args.vistos.parent.mkdir(parents=True, exist_ok=True)
     args.vistos.write_text(json.dumps(vistos, indent=1, ensure_ascii=False))

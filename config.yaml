@@ -3,8 +3,7 @@
 
 fontes: [olx, webmotors, mercadolivre, icarros]   # plataformas usadas por padrão
 max_paginas: 2                    # páginas lidas por plataforma em cada busca
-max_mensagens_por_execucao: 10    # evita lotar seu WhatsApp
-silenciar_primeira_execucao: true # na 1ª vez só registra o que já existe
+max_anuncios_por_email: 50        # limite de anúncios listados em cada e-mail
 
 buscas:
   - nome: Civic                   # aparece na mensagem

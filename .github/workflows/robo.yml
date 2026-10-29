@@ -28,8 +28,11 @@ jobs:
 
       - name: Procurar carros
         env:
-          WHATSAPP_TELEFONE: ${{ secrets.WHATSAPP_TELEFONE }}
-          CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+          SMTP_USUARIO: ${{ secrets.SMTP_USUARIO }}
+          SMTP_SENHA: ${{ secrets.SMTP_SENHA }}
+          EMAIL_PARA: ${{ secrets.EMAIL_PARA }}
+          SMTP_SERVIDOR: ${{ secrets.SMTP_SERVIDOR }}
+          SMTP_PORTA: ${{ secrets.SMTP_PORTA }}
           ML_ACCESS_TOKEN: ${{ secrets.ML_ACCESS_TOKEN }}
         run: python -m robo
 

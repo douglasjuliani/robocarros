@@ -1,6 +1,6 @@
 import json
 
-from robo import filtro, whatsapp
+from robo import filtro, notificacao
 from robo.fontes import icarros, mercadolivre, olx, webmotors
 from robo.modelo import Anuncio, Busca, numero, uf_de
 
@@ -69,6 +69,10 @@ def test_icarros_jsonld_e_cards():
     assert icarros.montar_url(BUSCA, 1).endswith("/comprar/santa-catarina/honda/civic")
 
 
-def test_mensagem():
-    a = Anuncio("olx", "1", "Honda Civic", "https://x", 89900, 2019, 45000, "Florianópolis", "SC")
-    assert "R$ 89.900 · 2019 · 45.000 km · Florianópolis/SC" in whatsapp.formatar(a, "Civic")
+def test_email():
+    a = Anuncio("olx", "1", "Honda Civic <EXL>", "https://x", 89900, 2019, 45000, "Florianópolis", "SC")
+    assunto, texto, html = notificacao.montar([("Civic", a)] * 3, primeira_vez=False, limite=2)
+    assert assunto == "🚗 3 carro(s) novo(s) encontrado(s)"
+    assert "R$ 89.900 | 2019 | 45.000 km | Florianópolis/SC" in texto and "mais 1 anúncio" in texto
+    assert "&lt;EXL&gt;" in html and html.count("<tr>") == 2
+    assert "ativado" in notificacao.montar([("Civic", a)], primeira_vez=True, limite=50)[0]
