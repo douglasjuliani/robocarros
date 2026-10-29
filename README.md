@@ -39,7 +39,8 @@ manda e-mail só quando aparecer carro novo.
 ## Lista de prioridade
 A cada execução o robô atualiza o arquivo **[RANKING.md](RANKING.md)** com todos os
 anúncios encontrados, do **mais barato em relação à média** para o mais caro. A média é
-a dos anúncios do mesmo ano (quando há 3 ou mais); senão, a média geral.
+a dos anúncios do mesmo ano e motor (ex.: 2024 1.6) quando há 3 ou mais; senão, do mesmo
+ano; senão, a média geral. Um mesmo carro anunciado em vários sites aparece uma vez só.
 ⚠️ marca anúncios mais de 30% abaixo da média, que costumam ser golpe, leilão ou sinistro.
 O e-mail traz essa mesma lista, com os anúncios novos marcados com 🆕.
 

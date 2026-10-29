@@ -90,6 +90,12 @@ def test_ranking():
     assert lista[1]["media"] == 110000 and lista[0]["media"] == 96000
     assert lista[0]["suspeito"] and not lista[1]["suspeito"]
     assert "| 1 | [Renault Duster](u) ⚠️ |" in ranking.markdown(lista, "hoje")
+    # com motor no título, compara 1.6 com 1.6 e 1.3 com 1.3
+    def ad2(i, preco, mot):
+        return ("D", Anuncio("olx", str(i), f"Duster {mot}", "u", preco, 2024, 1000))
+    l2 = ranking.calcular([ad2(1, 90, "1.6"), ad2(2, 100, "1.6"), ad2(3, 110, "1.6"),
+                           ad2(4, 130, "1.3"), ad2(5, 140, "1.3"), ad2(6, 150, "1.3")])
+    assert {it["anuncio"].id: it["media"] for it in l2} == {"1": 100, "2": 100, "3": 100, "4": 140, "5": 140, "6": 140}
 
 
 def test_cambio():
