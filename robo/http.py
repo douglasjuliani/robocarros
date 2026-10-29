@@ -36,7 +36,7 @@ def salvar_debug(nome: str) -> None:
     if ultima_resposta is not None:
         DEBUG.mkdir(parents=True, exist_ok=True)
         (DEBUG / f"{nome}.html").write_text(
-            f"<!-- {ultima_resposta.status_code} {ultima_resposta.url} -->\n{ultima_resposta.text[:300_000]}")
+            f"<!-- {ultima_resposta.status_code} {ultima_resposta.url} -->\n{ultima_resposta.text[:5_000_000]}")
 
 
 def salvar_amostra(nome: str, dados) -> None:

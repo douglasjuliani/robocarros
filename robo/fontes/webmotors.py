@@ -56,7 +56,7 @@ def extrair(dados: dict) -> list[Anuncio]:
         uid = item.get("UniqueId")
         url = (
             f"https://www.webmotors.com.br/comprar/{slug(marca)}/{slug(modelo)}/"
-            f"{slug(versao)}/{spec.get('NumberPorts') or 4}-portas/{ano or ''}/{uid}"
+            f"{slug(versao)}/{spec.get('NumberPorts') or 4}-portas/{numero(spec.get('YearModel')) or ano or ''}/{uid}"
         )
         anuncios.append(Anuncio(
             fonte="webmotors",

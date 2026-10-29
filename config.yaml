@@ -2,7 +2,7 @@
 # Edite as buscas abaixo. Todos os filtros são opcionais (apague a linha para não usar).
 
 fontes: [olx, webmotors, mercadolivre, icarros]   # plataformas usadas por padrão
-max_paginas: 5                    # páginas lidas por plataforma em cada busca
+max_paginas: 8                    # páginas lidas por plataforma em cada busca
 max_anuncios_por_email: 30        # limite de anúncios listados em cada e-mail
 
 buscas:

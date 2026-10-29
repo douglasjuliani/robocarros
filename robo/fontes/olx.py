@@ -1,9 +1,11 @@
-"""OLX: lê o JSON embutido na página de resultados (__NEXT_DATA__)."""
+"""OLX: lê os cards de anúncio da página de resultados (ou o antigo JSON __NEXT_DATA__)."""
 from __future__ import annotations
 
 import json
 import re
 from urllib.parse import urlencode
+
+from bs4 import BeautifulSoup
 
 from .. import http
 from ..modelo import Anuncio, Busca, numero, uf_de
@@ -23,10 +25,48 @@ def montar_url(busca: Busca, pagina: int) -> str:
     return f"{caminho}?{urlencode(params)}"
 
 
+def _dos_cards(html: str) -> list[Anuncio] | None:
+    soup = BeautifulSoup(html, "html.parser")
+    links = soup.select('a[data-testid="adcard-link"]')
+    if not links:
+        return None
+    anuncios = []
+    for link in links:
+        url = link.get("href", "")
+        titulo = link.get("title") or link.get_text(" ", strip=True)
+        card = link.find_parent(class_="olx-adcard__content") or link.parent
+        textos = list(card.stripped_strings)
+        preco_i = next((i for i, t in enumerate(textos) if t.startswith("R$")), None)
+        km_label = next((x["aria-label"] for x in card.select("[aria-label]") if "quilômetros" in x["aria-label"]), None)
+        ano = re.search(r"\b(19[89]\d|20[0-4]\d)\s*$", titulo)
+        uf = re.match(r"https://([a-z]{2})\.olx\.com\.br/", url)
+        id_ = re.search(r"-(\d{6,})$", url)
+        # local vem depois do preço no formato "Cidade, Bairro" (pula selos como "Online")
+        local = next((t for t in textos[(preco_i or 0) + 1:] if "," in t), None)
+        cidade = local.split(",")[0].strip() if local else None
+        anuncios.append(Anuncio(
+            fonte="olx",
+            id=id_.group(1) if id_ else url,
+            titulo=titulo,
+            url=url,
+            preco=numero(textos[preco_i]) if preco_i is not None else None,
+            ano=int(ano.group(1)) if ano else None,
+            km=numero(km_label),
+            cidade=cidade,
+            uf=uf_de(uf.group(1)) if uf else None,
+        ))
+    return anuncios
+
+
 def extrair(html: str) -> list[Anuncio]:
+    cards = _dos_cards(html)
+    if cards is not None:
+        return cards
     m = re.search(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', html, re.S)
     if not m:
-        raise ValueError("OLX: __NEXT_DATA__ não encontrado (layout mudou ou acesso bloqueado)")
+        if "olx-adcard" not in html and "Nenhum anúncio" not in html:
+            raise ValueError("OLX: nenhum anúncio na página (layout mudou ou acesso bloqueado)")
+        return []
     dados = json.loads(m.group(1))
     ads = dados.get("props", {}).get("pageProps", {}).get("ads", [])
     anuncios = []

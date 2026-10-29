@@ -40,10 +40,10 @@ def test_olx():
 def test_webmotors():
     dados = {"SearchResults": [{"UniqueId": 555, "Specification": {
         "Title": "HONDA CIVIC 2.0 EXL", "Make": {"Value": "HONDA"}, "Model": {"Value": "CIVIC"},
-        "Version": {"Value": "2.0 EXL CVT"}, "YearModel": 2020.0, "Odometer": 30000.0, "NumberPorts": "4"},
+        "Version": {"Value": "2.0 EXL CVT"}, "YearFabrication": "2019", "YearModel": 2020.0, "Odometer": 30000.0, "NumberPorts": "4"},
         "Prices": {"Price": 105000.0}, "Seller": {"City": "Joinville", "State": "Santa Catarina (SC)"}}]}
     [a] = webmotors.extrair(dados)
-    assert (a.preco, a.ano, a.km, a.id) == (105000, 2020, 30000, "555")
+    assert (a.preco, a.ano, a.km, a.id) == (105000, 2019, 30000, "555")
     assert a.url.endswith("/honda/civic/2-0-exl-cvt/4-portas/2020/555")
     assert "honda%2Fcivic" in webmotors.montar_url(BUSCA, 1)
 
@@ -98,3 +98,13 @@ def test_cambio():
     assert not filtro.aceita(Anuncio("webmotors", "2", "RENAULT DUSTER 1.6 ZEN", "u", cambio="Manual"), b)
     assert filtro.aceita(Anuncio("olx", "3", "Renault Duster Intense 1.6 CVT", "u"), b)
     assert not filtro.aceita(Anuncio("olx", "4", "Renault Duster Zen 1.6", "u"), b)  # câmbio desconhecido
+
+
+def test_olx_cards():
+    html = ('<div class="olx-adcard__content"><a data-testid="adcard-link" title="Renault Duster Iconic 1.3 TB Aut. 2023" '
+            'href="https://rs.olx.com.br/x/autos-e-pecas/carros-vans-e-utilitarios/renault-duster-2023-1548636195">t</a>'
+            '<div aria-label="41000 quilômetros rodados">41.000 km</div><span>R$ 89.000</span><span>Online</span>'
+            '<span>Novo Hamburgo, Centro</span></div>')
+    [a] = olx.extrair(html)
+    assert (a.id, a.preco, a.ano, a.km, a.cidade, a.uf) == ("1548636195", 89000, 2023, 41000, "Novo Hamburgo", "RS")
+    assert filtro.aceita(a, Busca(nome="D", modelo="Duster", cambio="automatico"))
