@@ -18,6 +18,10 @@ def montar_url(busca: Busca, pagina: int) -> str:
     filtros = {}
     if busca.uf:
         filtros["estadocidade"] = UFS[busca.uf]
+    for param, valor in (("anode", busca.ano_min), ("anoate", busca.ano_max), ("kmate", busca.km_max),
+                         ("precode", busca.preco_min), ("precoate", busca.preco_max)):
+        if valor:
+            filtros[param] = valor
     if not busca.marca and busca.texto_busca:
         filtros["q"] = busca.texto_busca
     url_site = f"https://www.webmotors.com.br/{caminho}"
@@ -48,7 +52,7 @@ def extrair(dados: dict) -> list[Anuncio]:
         vendedor = item.get("Seller") or {}
         precos = item.get("Prices") or {}
         marca, modelo, versao = (_valor(spec.get(k)) or "" for k in ("Make", "Model", "Version"))
-        ano = numero(spec.get("YearModel")) or numero(spec.get("YearFabrication"))
+        ano = numero(spec.get("YearFabrication")) or numero(spec.get("YearModel"))
         uid = item.get("UniqueId")
         url = (
             f"https://www.webmotors.com.br/comprar/{slug(marca)}/{slug(modelo)}/"
@@ -64,6 +68,7 @@ def extrair(dados: dict) -> list[Anuncio]:
             km=numero(spec.get("Odometer")),
             cidade=vendedor.get("City"),
             uf=uf_de(vendedor.get("State")),
+            cambio=_valor(spec.get("Transmission")),
         ))
     return anuncios
 
@@ -72,7 +77,10 @@ def buscar(busca: Busca, max_paginas: int) -> list[Anuncio]:
     resultado = []
     for pagina in range(1, max_paginas + 1):
         resp = http.get(montar_url(busca, pagina), headers={"Referer": "https://www.webmotors.com.br/"})
-        anuncios = extrair(resp.json())
+        dados = resp.json()
+        if pagina == 1 and dados.get("SearchResults"):
+            http.salvar_amostra("webmotors", dados["SearchResults"][0])
+        anuncios = extrair(dados)
         resultado += anuncios
         if not anuncios:
             break

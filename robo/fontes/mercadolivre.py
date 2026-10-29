@@ -43,6 +43,7 @@ def extrair(dados: dict) -> list[Anuncio]:
             km=numero(attrs.get("KILOMETERS")),
             cidade=(local.get("city") or {}).get("name"),
             uf=uf_de((local.get("state") or {}).get("name")),
+            cambio=attrs.get("TRANSMISSION"),
         ))
     return anuncios
 

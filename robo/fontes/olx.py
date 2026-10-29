@@ -45,6 +45,7 @@ def extrair(html: str) -> list[Anuncio]:
             km=numero(props.get("mileage")),
             cidade=local.get("municipality"),
             uf=uf_de(local.get("uf")),
+            cambio=props.get("gearbox"),
         ))
     return anuncios
 

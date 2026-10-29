@@ -65,6 +65,7 @@ class Busca:
     ano_min: int | None = None
     ano_max: int | None = None
     km_max: int | None = None
+    cambio: str | None = None  # automatico | manual
     uf: str | None = None
     cidades: list[str] = field(default_factory=list)
     incluir: list[str] = field(default_factory=list)
@@ -87,6 +88,7 @@ class Anuncio:
     km: int | None = None
     cidade: str | None = None
     uf: str | None = None
+    cambio: str | None = None
 
     @property
     def chave(self) -> str:

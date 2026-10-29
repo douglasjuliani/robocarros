@@ -1,6 +1,6 @@
 import json
 
-from robo import filtro, notificacao
+from robo import filtro, notificacao, ranking
 from robo.fontes import icarros, mercadolivre, olx, webmotors
 from robo.modelo import Anuncio, Busca, numero, uf_de
 
@@ -71,8 +71,30 @@ def test_icarros_jsonld_e_cards():
 
 def test_email():
     a = Anuncio("olx", "1", "Honda Civic <EXL>", "https://x", 89900, 2019, 45000, "Florianópolis", "SC")
-    assunto, texto, html = notificacao.montar([("Civic", a)] * 3, primeira_vez=False, limite=2)
-    assert assunto == "🚗 3 carro(s) novo(s) encontrado(s)"
-    assert "R$ 89.900 | 2019 | 45.000 km | Florianópolis/SC" in texto and "mais 1 anúncio" in texto
-    assert "&lt;EXL&gt;" in html and html.count("<tr>") == 2
-    assert "ativado" in notificacao.montar([("Civic", a)], primeira_vez=True, limite=50)[0]
+    b = Anuncio("olx", "2", "Honda Civic", "https://y", 100000, 2019, 1000)
+    c = Anuncio("olx", "3", "Honda Civic", "https://z", 110000, 2019, 1000)
+    lista = ranking.calcular([("Civic", x) for x in (c, a, b)], {"olx:1"})
+    assunto, texto, html = notificacao.montar([("Civic", a)], lista, primeira_vez=False, limite=2)
+    assert assunto == "🚗 1 carro(s) novo(s) encontrado(s)"
+    assert "1. 🆕 Honda Civic <EXL> | R$ 89.900 (-10.1% vs média R$ 99.967)" in texto and "mais 1 anúncio" in texto
+    assert "&lt;EXL&gt;" in html and html.count("<td>1</td>") == 1
+
+
+def test_ranking():
+    def ad(i, preco, ano):
+        return ("Duster", Anuncio("webmotors", str(i), "Renault Duster", "u", preco, ano, 1000))
+    itens = [ad(1, 100000, 2023), ad(2, 110000, 2023), ad(3, 120000, 2023), ad(4, 90000, 2022), ad(5, 60000, 2024)]
+    lista = ranking.calcular(itens)
+    # 2023 tem 3 anúncios: média própria (110 mil); os outros usam a média geral (96 mil)
+    assert [it["anuncio"].id for it in lista] == ["5", "1", "4", "2", "3"]
+    assert lista[1]["media"] == 110000 and lista[0]["media"] == 96000
+    assert lista[0]["suspeito"] and not lista[1]["suspeito"]
+    assert "| 1 | [Renault Duster](u) ⚠️ |" in ranking.markdown(lista, "hoje")
+
+
+def test_cambio():
+    b = Busca(nome="Duster", modelo="Duster", cambio="automatico")
+    assert filtro.aceita(Anuncio("webmotors", "1", "RENAULT DUSTER 1.6 ICONIC CVT", "u", cambio="Automática"), b)
+    assert not filtro.aceita(Anuncio("webmotors", "2", "RENAULT DUSTER 1.6 ZEN", "u", cambio="Manual"), b)
+    assert filtro.aceita(Anuncio("olx", "3", "Renault Duster Intense 1.6 CVT", "u"), b)
+    assert not filtro.aceita(Anuncio("olx", "4", "Renault Duster Zen 1.6", "u"), b)  # câmbio desconhecido

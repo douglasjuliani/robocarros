@@ -59,6 +59,7 @@ def _do_jsonld(soup: BeautifulSoup) -> list[Anuncio]:
                     preco=numero(ofertas.get("price")),
                     ano=numero(no.get("vehicleModelDate") or no.get("modelDate") or no.get("productionDate")),
                     km=numero(km.get("value") if isinstance(km, dict) else km),
+                    cambio=no.get("vehicleTransmission"),
                 ))
             for v in no.values():
                 if isinstance(v, (dict, list)):

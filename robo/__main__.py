@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
 import sys
 import traceback
 from datetime import datetime, timezone
@@ -16,7 +17,7 @@ from pathlib import Path
 
 import yaml
 
-from . import notificacao
+from . import http, notificacao, ranking
 from .filtro import aceita
 from .fontes import FONTES
 from .modelo import Busca, uf_de
@@ -53,39 +54,49 @@ def main() -> int:
     if simular and not args.simular:
         print("AVISO: segredos de e-mail não configurados; rodando em modo simulado.")
 
+    shutil.rmtree(http.DEBUG, ignore_errors=True)
     novos = []
+    todos = {}  # todos os anúncios ativos que passam no filtro (para a lista de prioridade)
     erros = []
     relatorio = []
     for busca in buscas:
         for nome_fonte in busca.fontes or config.get("fontes", list(FONTES)):
+            http.ultima_resposta = None
             try:
                 anuncios = FONTES[nome_fonte](busca, max_paginas)
             except Exception as e:  # uma fonte falhar não pode derrubar as outras
                 erros.append(f"{busca.nome}/{nome_fonte}: {e}")
                 relatorio.append({"busca": busca.nome, "fonte": nome_fonte, "erro": f"{type(e).__name__}: {e}"[:300]})
                 traceback.print_exc()
+                http.salvar_debug(f"{busca.nome}_{nome_fonte}".lower())
                 continue
             aprovados = [a for a in anuncios if aceita(a, busca)]
             print(f"[{busca.nome}] {nome_fonte}: {len(anuncios)} anúncios, {len(aprovados)} passam no filtro")
             relatorio.append({"busca": busca.nome, "fonte": nome_fonte,
                               "anuncios": len(anuncios), "aprovados": len(aprovados)})
             for a in aprovados:
+                todos.setdefault(a.chave, (busca.nome, a))
                 if a.chave not in vistos:
                     vistos[a.chave] = a.url
                     novos.append((busca.nome, a))
 
     print(f"{len(novos)} anúncio(s) novo(s). Erros: {len(erros)}")
 
+    agora = datetime.now(timezone.utc).strftime("%d/%m/%Y %H:%M")
+    lista = ranking.calcular(list(todos.values()), {a.chave for _, a in novos})
+    (RAIZ / "RANKING.md").write_text(ranking.markdown(lista, agora), encoding="utf-8")
+
     args.vistos.parent.mkdir(parents=True, exist_ok=True)
     (args.vistos.parent / "ultima_execucao.json").write_text(json.dumps({
         "data": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "ativos": len(todos),
         "novos": len(novos),
         "email_enviado": bool(novos) and not simular,
         "fontes": relatorio,
     }, indent=1, ensure_ascii=False))
 
     if novos:
-        notificacao.enviar(*notificacao.montar(novos, primeira_vez, max_anuncios), simular=simular)
+        notificacao.enviar(*notificacao.montar(novos, lista, primeira_vez, max_anuncios), simular=simular)
 
     # em modo simulado não marca nada como visto, para o 1º e-mail real trazer tudo
     if not simular or args.simular:

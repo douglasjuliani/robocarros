@@ -29,40 +29,50 @@ def _local(a: Anuncio) -> str:
     return "/".join(x for x in (a.cidade, a.uf) if x) or "—"
 
 
-def montar(novos: list[tuple[str, Anuncio]], primeira_vez: bool, limite: int) -> tuple[str, str, str]:
-    """Devolve (assunto, texto, html)."""
+def montar(novos: list[tuple[str, Anuncio]], lista: list[dict], primeira_vez: bool, limite: int) -> tuple[str, str, str]:
+    """Devolve (assunto, texto, html). O corpo é a lista de prioridade, com os novos marcados."""
     n = len(novos)
     if primeira_vez:
-        assunto = f"🚗 Robô de carros ativado: {n} anúncio(s) encontrados"
-        intro = "O robô está funcionando! Estes são os anúncios que já existem hoje. A partir de agora você recebe só os novos."
+        assunto = f"🚗 Robô de carros ativado: {len(lista)} anúncio(s) encontrados"
+        intro = ("O robô está funcionando! Abaixo, todos os anúncios encontrados hoje, do mais barato em relação "
+                 "à média para o mais caro. A partir de agora você recebe e-mail quando aparecer anúncio novo.")
     else:
         assunto = f"🚗 {n} carro(s) novo(s) encontrado(s)"
-        intro = "Novos anúncios que batem com os seus filtros:"
+        intro = (f"{n} anúncio(s) novo(s) (marcados com 🆕). Lista de prioridade atualizada, "
+                 "do mais barato em relação à média para o mais caro:")
 
     linhas_txt, linhas_html = [], []
-    for busca, a in novos[:limite]:
-        linhas_txt.append(f"[{busca}] {a.titulo} | {_preco(a)} | {a.ano or '—'} | {_km(a)} | {_local(a)} | {a.fonte}\n{a.url}")
+    for it in lista[:limite]:
+        a = it["anuncio"]
+        selo = ("🆕 " if it["novo"] and not primeira_vez else "") + ("⚠️ " if it["suspeito"] else "")
+        dif = f"{it['diferenca']:+.1%}"
+        linhas_txt.append(f"{it['posicao']}. {selo}{a.titulo} | {_preco(a)} ({dif} vs média R$ {it['media']:,.0f}) | "
+                          f"{a.ano or '—'} | {_km(a)} | {_local(a)} | {a.fonte}\n{a.url}".replace(",", "."))
+        cor = "#0a7d2c" if it["diferenca"] < 0 else "#b3261e"
+        fundo = " style='background:#fff8d6'" if it["novo"] and not primeira_vez else ""
         linhas_html.append(
-            "<tr>"
-            f"<td>{escape(busca)}</td>"
-            f'<td><a href="{escape(a.url)}">{escape(a.titulo)}</a></td>'
+            f"<tr{fundo}>"
+            f"<td>{it['posicao']}</td>"
+            f'<td>{selo}<a href="{escape(a.url)}">{escape(a.titulo)}</a></td>'
             f"<td style='white-space:nowrap'><b>{_preco(a)}</b></td>"
-            f"<td>{a.ano or '—'}</td>"
+            f"<td style='white-space:nowrap;color:{cor}'><b>{dif}</b><br><small>média R$ {it['media']:,.0f}</small></td>".replace(",", ".")
+            + f"<td>{a.ano or '—'}</td>"
             f"<td style='white-space:nowrap'>{_km(a)}</td>"
             f"<td>{escape(_local(a))}</td>"
             f"<td>{a.fonte}</td>"
             "</tr>"
         )
-    resto = f"…e mais {n - limite} anúncio(s). Refine os filtros no config.yaml." if n > limite else ""
+    resto = f"…e mais {len(lista) - limite} anúncio(s) na lista completa (RANKING.md no GitHub)." if len(lista) > limite else ""
+    legenda = "🆕 = anúncio novo · ⚠️ = mais de 30% abaixo da média: desconfie (golpe, leilão, sinistro)."
 
-    texto = "\n\n".join([intro, *linhas_txt, resto]).strip()
+    texto = "\n\n".join([intro, *linhas_txt, resto, legenda]).strip()
     cab = "".join(f"<th style='text-align:left;padding:6px'>{c}</th>"
-                  for c in ("Busca", "Anúncio", "Preço", "Ano", "Km", "Local", "Site"))
+                  for c in ("#", "Anúncio", "Preço", "vs. média", "Ano", "Km", "Local", "Site"))
     html = (
         f"<p>{escape(intro)}</p>"
         "<table border='1' cellspacing='0' cellpadding='6' style='border-collapse:collapse;font-family:sans-serif;font-size:14px'>"
         f"<tr style='background:#eee'>{cab}</tr>{''.join(linhas_html)}</table>"
-        f"<p>{escape(resto)}</p>"
+        f"<p>{escape(resto)}</p><p><small>{escape(legenda)}</small></p>"
     )
     return assunto, texto, html
 

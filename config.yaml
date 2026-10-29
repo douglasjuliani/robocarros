@@ -2,28 +2,16 @@
 # Edite as buscas abaixo. Todos os filtros são opcionais (apague a linha para não usar).
 
 fontes: [olx, webmotors, mercadolivre, icarros]   # plataformas usadas por padrão
-max_paginas: 2                    # páginas lidas por plataforma em cada busca
-max_anuncios_por_email: 50        # limite de anúncios listados em cada e-mail
+max_paginas: 5                    # páginas lidas por plataforma em cada busca
+max_anuncios_por_email: 30        # limite de anúncios listados em cada e-mail
 
 buscas:
-  - nome: Civic                   # aparece na mensagem
-    marca: Honda
-    modelo: Civic                 # precisa aparecer no título do anúncio
-    preco_min: 60000
-    preco_max: 110000
-    ano_min: 2017
-    km_max: 90000
-    uf: SC                        # sigla do estado
-    cidades: []                   # ex.: [Florianópolis, São José, Palhoça]
-    incluir: []                   # palavras obrigatórias no título, ex.: [automatico]
-    excluir: [leilao, sinistro, batido, recuperado, sucata, troca]
-
-  - nome: Corolla
-    marca: Toyota
-    modelo: Corolla
-    preco_max: 120000
-    ano_min: 2018
-    km_max: 80000
-    uf: SC
-    excluir: [leilao, sinistro, batido]
-    # fontes: [olx, webmotors]    # opcional: só estas plataformas nesta busca
+  - nome: Duster
+    marca: Renault
+    modelo: Duster                # qualquer versão
+    cambio: automatico            # automatico | manual (exige câmbio confirmado)
+    ano_min: 2022                 # ano de fabricação
+    km_max: 50000
+    # preco_max: 120000           # opcional
+    # uf: SC                      # opcional: sem isto, busca no Brasil todo
+    excluir: [leilao, sinistro, batido, recuperado, sucata, troca, repasse]
