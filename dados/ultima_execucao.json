@@ -1,14 +1,14 @@
 {
- "data": "2026-11-03T06:58:51+00:00",
- "ativos": 393,
- "novos": 393,
+ "data": "2026-11-03T15:19:11+00:00",
+ "ativos": 398,
+ "novos": 398,
  "email_enviado": false,
  "fontes": [
   {
    "busca": "Duster",
    "fonte": "olx",
    "anuncios": 750,
-   "aprovados": 101
+   "aprovados": 107
   },
   {
    "busca": "Duster",
