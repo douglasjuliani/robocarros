@@ -1,68 +1,56 @@
 {
- "UniqueId": 81852146,
+ "UniqueId": 81666296,
  "Media": {
   "Photos": [
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17535006312.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065024727.jpg",
     "Order": 1
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17535254224.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065073980.jpg",
     "Order": 2
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17535489720.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065147453.jpg",
     "Order": 3
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17535939753.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065193547.jpg",
     "Order": 4
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17540197222.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065230923.jpg",
     "Order": 5
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17540426691.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065303388.jpg",
     "Order": 6
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17540805416.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065452149.jpg",
     "Order": 7
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17541036515.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065586670.jpg",
     "Order": 8
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17541246862.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065709410.jpg",
     "Order": 9
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem1754148705.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065838122.jpg",
     "Order": 10
    },
    {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17541718211.jpg",
+    "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065941682.jpg",
     "Order": 11
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17541954856.jpg",
-    "Order": 12
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17542198266.jpg",
-    "Order": 13
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17542490489.jpg",
-    "Order": 14
    }
   ]
  },
- "PhotoPath": "2026\\202611\\20261103\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem17535006312.jpg",
+ "PhotoPath": "2026\\202610\\20261028\\renault-duster-1.6-16v-sce-flex-iconic-plus-xtronic-wmimagem17065024727.jpg",
  "Specification": {
-  "Title": "RENAULT DUSTER 1.6 16V SCE FLEX INTENSE PLUS X-TRONIC",
+  "Title": "RENAULT DUSTER 1.6 16V SCE FLEX ICONIC PLUS X-TRONIC",
   "Make": {
    "id": 30,
    "Value": "RENAULT"
@@ -72,12 +60,12 @@
    "Value": "DUSTER"
   },
   "Version": {
-   "id": 379584,
-   "Value": "1.6 16V SCE FLEX INTENSE PLUS X-TRONIC"
+   "id": 379583,
+   "Value": "1.6 16V SCE FLEX ICONIC PLUS X-TRONIC"
   },
-  "YearFabrication": "2024",
-  "YearModel": 2025.0,
-  "Odometer": 33000.0,
+  "YearFabrication": "2026",
+  "YearModel": 2027.0,
+  "Odometer": 2000.0,
   "Transmission": "Automática",
   "NumberPorts": "4",
   "BodyType": "Utilitário esportivo",
@@ -87,69 +75,78 @@
     "Name": "Aceita troca"
    },
    {
+    "Name": "Único dono"
+   },
+   {
+    "Name": "Todas as revisões feitas pela concessionária"
+   },
+   {
     "Name": "IPVA pago"
    },
    {
     "Name": "Licenciado"
+   },
+   {
+    "Name": "Garantia de fábrica"
    }
   ],
   "Armored": "N",
   "Color": {
-   "IdPrimary": "30410",
-   "Primary": "Preto"
+   "IdPrimary": "30404",
+   "Primary": "Branco"
   },
   "EngineSize": "1.6",
   "HorsePower": "120 cv",
   "Traction": "Dianteira",
   "TrunkCapacity": "475 l",
   "FuelTankCapacity": "50 l",
-  "WheelSize": "16"
+  "WheelSize": "17"
  },
  "Seller": {
-  "Id": 3957613,
+  "Id": 3835140,
   "SellerType": "PJ",
-  "City": "Guarulhos",
-  "State": "São Paulo (SP)",
+  "City": "Rio de Janeiro",
+  "State": "Rio de Janeiro (RJ)",
   "AdType": {
-   "id": 2,
-   "Value": "Concessionária"
+   "id": 1,
+   "Value": "Loja"
   },
   "BudgetInvestimento": 0,
   "DealerScore": 0,
   "CarDelivery": false,
   "TrocaComTroco": false,
   "ExceededPlan": false,
-  "FantasyName": "Quality Toyota Guarulhos",
+  "FantasyName": "Union Veículos",
   "IsCtaWhatsApp": false,
   "AnswerQuickly": false,
   "Localization": [
    {
-    "State": "São Paulo (SP)",
-    "City": "Guarulhos",
+    "State": "Rio de Janeiro (RJ)",
+    "City": "Rio de Janeiro",
     "Country": "Brasil",
-    "Neighborhood": "Jd Sta Francisca",
-    "ZipCode": "07013000",
-    "AbbrState": "Av.Aniello Pratici, 350"
+    "Neighborhood": "Vila Isabel",
+    "ZipCode": "20560001",
+    "AbbrState": "Rua Teodoro da Silva, 232"
    }
   ]
  },
  "Prices": {
-  "Price": 87990.0,
-  "SearchPrice": 87990.0,
-  "FinancingStartValue": 1729.27,
+  "Price": 124900.0,
+  "SearchPrice": 124900.0,
+  "FinancingStartValue": 2454.66,
   "FinancingTotalInstallments": 60,
   "FinancingInterestRate": 0.019
  },
  "ListingType": "U",
- "ProductCode": "38489",
+ "ProductCode": "1614",
  "Channels": [
   {
    "id": 0,
    "Value": "Webmotors"
   }
  ],
- "LongComment": "Renault Duster Plus Intense 1.6 Manual 2024/2025 - Apenas 33.000 km\n\nRenault Duster Plus Intense 1.6, ano/modelo 2024/2025, com câmbio manual e apenas 33 mil km rodados.\n\nSUV espaçoso, confortável e robusto, ideal para a cidade, estrada e viagens em família. Excelente oportunidade para quem procura um veículo moderno, versátil e com baixa quilometragem.\n\nMotor 1.6\nCâmbio manual\nAno/modelo 2024/2025\nApenas 33.000 km\nVersão Intense\nAmplo espaço interno\nExcelente porta-malas",
- "FipePercent": 89,
+ "LongComment": "A Union Rio Veículos desde 1970 compra e vende carros novos e usados, com garantia de qualidade através de seus profissionais preparados para exigência do mercado. Fazemos também vistoria CAUTELAR COM MAIS GARANTIA PARA SUA COMPRA, TROCO NA TROCA, SUPER AVALIAÇÃO DO SEU USADO, GARANTIA TOTAL DE PROCEDÊNCIA E LEVAMOS O CARRO AO SEU LOCAL ( A CONSULTAR )\n\n",
+ "FipePercent": 94,
  "GoodDeal": true,
  "IsElegibleVehicleInspection": false,
  "IsElegible360View": false,
