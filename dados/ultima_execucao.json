@@ -1,20 +1,20 @@
 {
- "data": "2026-11-07T18:06:59+00:00",
- "ativos": 292,
- "novos": 292,
+ "data": "2026-11-07T21:59:43+00:00",
+ "ativos": 410,
+ "novos": 410,
  "email_enviado": false,
  "fontes": [
   {
    "busca": "Duster",
    "fonte": "olx",
-   "erro": "HTTPError: HTTP Error 403: ",
-   "usando_cache": false
+   "anuncios": 750,
+   "aprovados": 117
   },
   {
    "busca": "Duster",
    "fonte": "webmotors",
    "anuncios": 360,
-   "aprovados": 292
+   "aprovados": 293
   },
   {
    "busca": "Duster",
