@@ -1,6 +1,6 @@
 # 🚗 Lista de prioridade
 
-Atualizada em 08/11/2026 16:04 (UTC). Ordenada do anúncio **mais abaixo da média** para o mais caro.
+Atualizada em 08/11/2026 20:35 (UTC). Ordenada do anúncio **mais abaixo da média** para o mais caro.
 A média compara com anúncios do mesmo ano e motor (ex.: 2024 1.6) quando há 3 ou mais; senão, do mesmo ano; senão, a média geral.
 
 | # | Anúncio | Preço | Média (grupo) | Diferença | Ano modelo | Km | Local | Site |
@@ -112,7 +112,7 @@ A média compara com anúncios do mesmo ano e motor (ex.: 2024 1.6) quando há 3
 | 105 | [Renault Duster Iconic Plus 1.3 TB 16V Flex Aut. 2025](https://sc.olx.com.br/norte-de-santa-catarina/autos-e-pecas/carros-vans-e-utilitarios/renault-duster-iconic-plus-1-3-tb-16v-flex-aut-2025-1529005730) | **R$ 107.900** | R$ 112.589 (2025 1.3) | -4.2% | 2025 | 30.647 | Joinville/SC | olx |
 | 106 | [RENAULT DUSTER 1.6 16V SCE FLEX INTENSE PLUS X-TRONIC](https://www.webmotors.com.br/comprar/renault/duster/1-6-16v-sce-flex-intense-plus-x-tronic/4-portas/2026/81961878) 🆕 | **R$ 99.500** | R$ 103.803 (2026 1.6) | -4.1% | 2026 | 38.303 | Juiz de Fora | webmotors |
 | 107 | [RENAULT DUSTER 1.6 16V SCE FLEX INTENSE PLUS X-TRONIC](https://www.webmotors.com.br/comprar/renault/duster/1-6-16v-sce-flex-intense-plus-x-tronic/4-portas/2026/81944909) 🆕 | **R$ 99.500** | R$ 103.803 (2026 1.6) | -4.1% | 2026 | 46.962 | Goiânia | webmotors |
-| 108 | [RENAULT DUSTER 1.3 TCE FLEX ICONIC PLUS X-TRONIC](https://www.webmotors.com.br/comprar/renault/duster/1-3-tce-flex-iconic-plus-x-tronic/4-portas/2025/82028863) 🆕 | **R$ 107.990** | R$ 112.589 (2025 1.3) | -4.1% | 2025 | 29.654 | Belém | webmotors |
+| 108 | [RENAULT DUSTER 1.3 TCE FLEX ICONIC PLUS X-TRONIC](https://www.webmotors.com.br/comprar/renault/duster/1-3-tce-flex-iconic-plus-x-tronic/4-portas/2025/82030924) 🆕 | **R$ 107.990** | R$ 112.589 (2025 1.3) | -4.1% | 2025 | 29.654 | Belém | webmotors |
 | 109 | [Renault Duster Iconic 1.6 16V Flex AUT 2024](https://rj.olx.com.br/rio-de-janeiro-e-regiao/autos-e-pecas/carros-vans-e-utilitarios/renault-duster-iconic-1-6-16v-flex-aut-2024-1550946902) | **R$ 90.900** | R$ 94.740 (2024 1.6) | -4.1% | 2024 | 25.845 | Rio de Janeiro/RJ | olx |
 | 110 | [Renault Duster Iconic 1.3 TB 16V Flex Aut. 2027](https://sp.olx.com.br/sao-paulo-e-regiao/autos-e-pecas/carros-vans-e-utilitarios/renault-duster-iconic-1-3-tb-16v-flex-aut-2027-1549427483) | **R$ 125.900** | R$ 131.137 (2027 1.3) | -4.0% | 2027 | 8.900 | São Paulo/SP | olx + webmotors |
 | 111 | [RENAULT DUSTER 1.3 TCE FLEX ICONIC PLUS X-TRONIC](https://www.webmotors.com.br/comprar/renault/duster/1-3-tce-flex-iconic-plus-x-tronic/4-portas/2027/78673982) 🆕 | **R$ 125.900** | R$ 131.137 (2027 1.3) | -4.0% | 2027 | 6.442 | Curitiba | webmotors |
