@@ -1,7 +1,7 @@
 {
- "data": "2026-11-08T09:09:04+00:00",
- "ativos": 409,
- "novos": 292,
+ "data": "2026-11-08T16:04:09+00:00",
+ "ativos": 408,
+ "novos": 291,
  "email_enviado": false,
  "fontes": [
   {
@@ -14,7 +14,7 @@
    "busca": "Duster",
    "fonte": "webmotors",
    "anuncios": 360,
-   "aprovados": 293
+   "aprovados": 291
   },
   {
    "busca": "Duster",
