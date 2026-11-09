@@ -1,92 +1,44 @@
 {
- "UniqueId": 82030107,
+ "UniqueId": 81790441,
  "Media": {
   "Photos": [
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255348271.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15320402992.jpg",
     "Order": 1
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255396327.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15322562640.jpg",
     "Order": 2
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255444040.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15325113064.jpg",
     "Order": 3
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255504263.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15331016030.jpg",
     "Order": 4
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255573027.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15332519059.jpg",
     "Order": 5
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255620111.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15333717236.jpg",
     "Order": 6
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255677875.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15340891878.jpg",
     "Order": 7
    },
    {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255730221.jpg",
+    "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15345604044.jpg",
     "Order": 8
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem1125577806.jpg",
-    "Order": 9
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255827381.jpg",
-    "Order": 10
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255892922.jpg",
-    "Order": 11
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255945991.jpg",
-    "Order": 12
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255995466.jpg",
-    "Order": 13
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260056046.jpg",
-    "Order": 14
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260114169.jpg",
-    "Order": 15
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260181375.jpg",
-    "Order": 16
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260253038.jpg",
-    "Order": 17
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260317849.jpg",
-    "Order": 18
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260373892.jpg",
-    "Order": 19
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11260441690.jpg",
-    "Order": 20
    }
   ]
  },
- "PhotoPath": "2026\\202611\\20261108\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem11255348271.jpg",
+ "PhotoPath": "2026\\202611\\20261101\\renaultduster1616vsceflexzenmanual-WMIMAGEM15320402992.jpg",
  "Specification": {
-  "Title": "RENAULT DUSTER 1.6 16V SCE FLEX INTENSE PLUS X-TRONIC",
+  "Title": "RENAULT DUSTER 1.6 16V SCE FLEX ZEN MANUAL",
   "Make": {
    "id": 30,
    "Value": "RENAULT"
@@ -96,31 +48,20 @@
    "Value": "DUSTER"
   },
   "Version": {
-   "id": 379584,
-   "Value": "1.6 16V SCE FLEX INTENSE PLUS X-TRONIC"
+   "id": 348332,
+   "Value": "1.6 16V SCE FLEX ZEN MANUAL"
   },
-  "YearFabrication": "2025",
-  "YearModel": 2026.0,
-  "Odometer": 28325.0,
-  "Transmission": "Automática",
+  "YearFabrication": "2022",
+  "YearModel": 2023.0,
+  "Odometer": 41000.0,
+  "Transmission": "Manual",
   "NumberPorts": "4",
   "BodyType": "Utilitário esportivo",
   "Auction": false,
-  "VehicleAttributes": [
-   {
-    "Name": "Aceita troca"
-   },
-   {
-    "Name": "IPVA pago"
-   },
-   {
-    "Name": "Licenciado"
-   }
-  ],
   "Armored": "N",
   "Color": {
-   "IdPrimary": "30409",
-   "Primary": "Prata"
+   "IdPrimary": "30410",
+   "Primary": "Preto"
   },
   "EngineSize": "1.6",
   "HorsePower": "120 cv",
@@ -130,56 +71,47 @@
   "WheelSize": "16"
  },
  "Seller": {
-  "Id": 3824828,
-  "SellerType": "PJ",
-  "City": "Contagem",
-  "State": "Minas Gerais (MG)",
+  "Id": 17457996,
+  "SellerType": "PF",
+  "City": "Rio de Janeiro",
+  "State": "Rio de Janeiro (RJ)",
   "AdType": {
-   "id": 1,
-   "Value": "Loja"
+   "id": 4,
+   "Value": "Pessoa Física"
   },
-  "BudgetInvestimento": 1,
+  "BudgetInvestimento": 0,
   "DealerScore": 0,
   "CarDelivery": false,
   "TrocaComTroco": false,
   "ExceededPlan": false,
-  "FantasyName": "Fox Car",
-  "IsCtaWhatsApp": true,
+  "IsCtaWhatsApp": false,
   "AnswerQuickly": false,
   "Localization": [
    {
-    "State": "Minas Gerais (MG)",
-    "City": "Contagem",
+    "State": "Rio de Janeiro (RJ)",
+    "City": "Rio de Janeiro",
     "Country": "Brasil",
-    "Neighborhood": "Cidade Industrial",
-    "ZipCode": "32210180",
-    "AbbrState": "Av.Babita Camargos, 1295"
+    "ZipCode": "22723350",
+    "AbbrState": "RJ"
    }
   ]
  },
  "Prices": {
-  "Price": 106100.0,
-  "SearchPrice": 106100.0,
-  "FinancingStartValue": 2085.18,
+  "Price": 77000.0,
+  "SearchPrice": 77000.0,
+  "FinancingStartValue": 1513.28,
   "FinancingTotalInstallments": 60,
   "FinancingInterestRate": 0.019
  },
- "HotDeal": [
-  {
-   "Id": "3197",
-   "Value": "Black Feirão"
-  }
- ],
  "ListingType": "U",
- "ProductCode": "38489",
+ "ProductCode": "674",
  "Channels": [
   {
    "id": 0,
    "Value": "Webmotors"
   }
  ],
- "LongComment": "ATENDEMOS 24 HORAS NO *******  ,   É SÓ CHAMAR : \nCAMILA   (31) **********              MARCELO (31) **********          NAYARA  **********                                                                                \nROMULO  **********              JULIA (31) **********                  MARIA EDUARDA (31) **********  \nFOXCAR MULTIMARCAS , 23 ANOS VENDENDO VEÍCULOS USADOS , TRADIÇÃO E QUALIDADE SEMPRE , MAIS DE 13.000 VEÍCULOS VENDIDOS , ESTOQUE PRÓPRIO , NÃO TRABALHAMOS COM CONSIGNAÇÃO , TODOS VEÍCULOS EM NOME DA LOJA . VEÍCULOS POUCO RODADOS , COM LAUDO CAUTELAR ,\n VENHA CONFERIR !!!!!",
- "FipePercent": 100,
+ "FipePercent": 101,
  "IsElegibleVehicleInspection": false,
  "IsElegible360View": false,
  "MediaZeroKm": false
