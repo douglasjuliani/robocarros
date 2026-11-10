@@ -1,20 +1,20 @@
 {
- "data": "2026-11-10T10:03:12+00:00",
- "ativos": 308,
- "novos": 308,
+ "data": "2026-11-10T17:57:16+00:00",
+ "ativos": 295,
+ "novos": 295,
  "email_enviado": false,
  "fontes": [
   {
    "busca": "Duster",
    "fonte": "olx",
-   "erro": "ValueError: OLX: nenhum anúncio na página (layout mudou ou acesso bloqueado)",
+   "erro": "HTTPError: HTTP Error 403: ",
    "usando_cache": false
   },
   {
    "busca": "Duster",
    "fonte": "webmotors",
    "anuncios": 360,
-   "aprovados": 308
+   "aprovados": 295
   },
   {
    "busca": "Duster",
