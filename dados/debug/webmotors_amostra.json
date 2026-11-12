@@ -1,40 +1,32 @@
 {
- "UniqueId": 82016008,
+ "UniqueId": 81549433,
  "Media": {
   "Photos": [
    {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16192906834.jpg",
+    "PhotoPath": "2026\\202611\\20261111\\renaultduster13tceflexiconicplusxtronic-WMIMAGEM06002194923.jpg",
     "Order": 1
    },
    {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16193118927.jpg",
+    "PhotoPath": "2026\\202611\\20261111\\renaultduster13tceflexiconicplusxtronic-WMIMAGEM06010192487.jpg",
     "Order": 2
    },
    {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16193315419.jpg",
+    "PhotoPath": "2026\\202611\\20261111\\renaultduster13tceflexiconicplusxtronic-WMIMAGEM06011714567.jpg",
     "Order": 3
    },
    {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16193534233.jpg",
+    "PhotoPath": "2026\\202611\\20261111\\renaultduster13tceflexiconicplusxtronic-WMIMAGEM06013359527.jpg",
     "Order": 4
    },
    {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16193723988.jpg",
+    "PhotoPath": "2026\\202611\\20261111\\renaultduster13tceflexiconicplusxtronic-WMIMAGEM06021633598.jpg",
     "Order": 5
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16193904328.jpg",
-    "Order": 6
-   },
-   {
-    "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16194060771.jpg",
-    "Order": 7
    }
   ]
  },
- "PhotoPath": "2026\\202611\\20261107\\renault-duster-1.6-16v-sce-flex-intense-plus-xtronic-wmimagem16192906834.jpg",
+ "PhotoPath": "2026\\202611\\20261111\\renaultduster13tceflexiconicplusxtronic-WMIMAGEM06002194923.jpg",
  "Specification": {
-  "Title": "RENAULT DUSTER 1.6 16V SCE FLEX INTENSE PLUS X-TRONIC",
+  "Title": "RENAULT DUSTER 1.3 TCE FLEX ICONIC PLUS X-TRONIC",
   "Make": {
    "id": 30,
    "Value": "RENAULT"
@@ -44,20 +36,17 @@
    "Value": "DUSTER"
   },
   "Version": {
-   "id": 379584,
-   "Value": "1.6 16V SCE FLEX INTENSE PLUS X-TRONIC"
+   "id": 379585,
+   "Value": "1.3 TCE FLEX ICONIC PLUS X-TRONIC"
   },
-  "YearFabrication": "2025",
-  "YearModel": 2026.0,
-  "Odometer": 34708.0,
-  "Transmission": "Automática",
+  "YearFabrication": "2026",
+  "YearModel": 2027.0,
+  "Odometer": 14000.0,
+  "Transmission": "CVT",
   "NumberPorts": "4",
   "BodyType": "Utilitário esportivo",
   "Auction": false,
   "VehicleAttributes": [
-   {
-    "Name": "Aceita troca"
-   },
    {
     "Name": "Único dono"
    },
@@ -66,66 +55,68 @@
    },
    {
     "Name": "Licenciado"
+   },
+   {
+    "Name": "Garantia de fábrica"
    }
   ],
   "Armored": "N",
   "Color": {
-   "IdPrimary": "30410",
-   "Primary": "Preto"
+   "IdPrimary": "30405",
+   "Primary": "Cinza"
   },
-  "EngineSize": "1.6",
-  "HorsePower": "120 cv",
+  "EngineSize": "1.3",
+  "HorsePower": "170 cv",
   "Traction": "Dianteira",
   "TrunkCapacity": "475 l",
   "FuelTankCapacity": "50 l",
-  "WheelSize": "16"
+  "WheelSize": "17"
  },
  "Seller": {
-  "Id": 55693,
-  "SellerType": "PJ",
-  "City": "São Paulo",
-  "State": "São Paulo (SP)",
+  "Id": 12283849,
+  "SellerType": "PF",
+  "City": "Araucária",
+  "State": "Paraná (PR)",
   "AdType": {
-   "id": 2,
-   "Value": "Concessionária"
+   "id": 4,
+   "Value": "Pessoa Física"
   },
-  "BudgetInvestimento": 1,
+  "BudgetInvestimento": 0,
   "DealerScore": 0,
   "CarDelivery": false,
   "TrocaComTroco": false,
   "ExceededPlan": false,
-  "FantasyName": "Sonnervig Vila Guilherme",
   "IsCtaWhatsApp": false,
   "AnswerQuickly": false,
   "Localization": [
    {
-    "State": "São Paulo (SP)",
-    "City": "São Paulo",
+    "State": "Paraná (PR)",
+    "City": "Araucária",
     "Country": "Brasil",
-    "Neighborhood": "Vila Guilherme",
-    "ZipCode": "02052010",
-    "AbbrState": "Rua dos Machados, 150"
+    "ZipCode": "83709250",
+    "AbbrState": "PR"
    }
   ]
  },
  "Prices": {
-  "Price": 95990.0,
-  "SearchPrice": 95990.0,
-  "FinancingStartValue": 1886.49,
+  "Price": 119000.0,
+  "SearchPrice": 119000.0,
+  "FinancingStartValue": 2338.7,
   "FinancingTotalInstallments": 60,
   "FinancingInterestRate": 0.019
  },
  "ListingType": "U",
- "ProductCode": "38489",
+ "ProductCode": "1236",
  "Channels": [
   {
    "id": 0,
    "Value": "Webmotors"
   }
  ],
- "FipePercent": 90,
+ "LongComment": "Renault Duster Unico dono, sem leilão, sem batida, revisões na concessionária.  veículo corporativo da Renault Geely do Brasil.  Laudo cautelar aprovado.  ",
+ "FipePercent": 86,
  "GoodDeal": true,
  "IsElegibleVehicleInspection": false,
- "IsElegible360View": true,
+ "IsElegible360View": false,
  "MediaZeroKm": false
 }
