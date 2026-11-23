@@ -1,14 +1,14 @@
 {
- "data": "2026-11-22T22:32:47+00:00",
+ "data": "2026-11-23T03:46:22+00:00",
  "ativos": 449,
- "novos": 449,
+ "novos": 297,
  "email_enviado": false,
  "fontes": [
   {
    "busca": "Duster",
    "fonte": "olx",
-   "anuncios": 750,
-   "aprovados": 152
+   "erro": "HTTPError: HTTP Error 403: ",
+   "usando_cache": true
   },
   {
    "busca": "Duster",
